@@ -1,0 +1,27 @@
+---
+title: "US Personal Expenditures by Category From 1940-1960"
+author: "Triston Cossette"
+date: "5/18/2017"
+output: ioslides_presentation
+---
+
+## The Total Amount of US Expenditures, by Category
+```{r echo=FALSE, include=FALSE}
+library(datasets)
+library(tidyr)
+library(plotly)
+
+USPE<- as.data.frame(USPersonalExpenditure)
+USPE$category<-c("Food and Tobacco","Household Operation","Medical and Health","Personal Care","Private Education")
+USPE<- gather(USPE, Year, Spending, `1940`:`1960`)
+```
+
+```{r echo=FALSE}
+p <- plot_ly(USPE, x = USPE$Year, y = USPE$Spending, type = 'scatter', color=USPE$category, mode = 'lines+markers')
+p
+```
+
+
+## Insight: Perhaps the war stimulated our economy?
+
+
